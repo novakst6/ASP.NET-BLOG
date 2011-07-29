@@ -1,0 +1,52 @@
+﻿<%@ Master Language="VB" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%-- The following line works around an ASP.NET compiler warning --%>
+<%@ Import Namespace="Blogger" %>
+<%: ""%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .style1
+        {
+            font-family: "Courier New";
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1 class="style1">Blogger</h1>
+            </div>
+               <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl")%>   
+              
+            </div> 
+            
+            <div id="menucontainer">
+            
+                <ul id="menu">              
+                    <li><%: Html.ActionLink("Domů", "Index", "Home")%></li>
+                    <li><%: Html.ActionLink("Articles", "Articles", "Article")%></li>
+                <%If Request.IsAuthenticated Then%>
+                    <li><%: Html.ActionLink("Přidej článek", "AddArticle", "Article")%></li>
+                <%End If%>
+                </ul>
+            
+            </div>
+        </div>
+
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+                Autor Novák Stanislav [©2011]</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BlogData" Class="BlogEntitiesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\BlogData.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BlogDataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BlogArticleCommentary" Member="BlogArticleCommentaries">
+    <Type Name="BlogArticleCommentary">
+      <Column Name="commentaryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="commentaryText" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="commentaryDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="commentaryArticleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="commentaryAutorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BlogUser_BlogArticleCommentary" Member="BlogUser" ThisKey="commentaryAutorId" OtherKey="userId" Type="BlogUser" IsForeignKey="true" />
+      <Association Name="BlogArticle_BlogArticleCommentary" Member="BlogArticle" ThisKey="commentaryArticleId" OtherKey="articleId" Type="BlogArticle" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BlogCategory" Member="BlogCategories">
+    <Type Name="BlogCategory">
+      <Column Name="categoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="categoryName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="categoryDescription" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="BlogCategory_BlogArticle" Member="BlogArticles" ThisKey="categoryId" OtherKey="articleCategoryId" Type="BlogArticle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BlogUser" Member="BlogUsers">
+    <Type Name="BlogUser">
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userFirsName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userLastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userNickName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userPassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="BlogUser_BlogArticleCommentary" Member="BlogArticleCommentaries" ThisKey="userId" OtherKey="commentaryAutorId" Type="BlogArticleCommentary" />
+      <Association Name="BlogUser_BlogArticle" Member="BlogArticles" ThisKey="userId" OtherKey="articleAutorId" Type="BlogArticle" />
+      <Association Name="BlogUserRole_BlogUser" Member="BlogUserRole" ThisKey="userRoleId" OtherKey="roleId" Type="BlogUserRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BlogUserRole" Member="BlogUserRoles">
+    <Type Name="BlogUserRole">
+      <Column Name="roleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="roleName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="BlogUserRole_BlogUser" Member="BlogUsers" ThisKey="roleId" OtherKey="userRoleId" Type="BlogUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BlogArticle" Member="BlogArticles">
+    <Type Name="BlogArticle">
+      <Column Name="articleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="articleText" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="articleDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="articleAutorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="articleCategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="articleTittle" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="BlogArticle_BlogArticleCommentary" Member="BlogArticleCommentaries" ThisKey="articleId" OtherKey="commentaryArticleId" Type="BlogArticleCommentary" />
+      <Association Name="BlogCategory_BlogArticle" Member="BlogCategory" ThisKey="articleCategoryId" OtherKey="categoryId" Type="BlogCategory" IsForeignKey="true" />
+      <Association Name="BlogUser_BlogArticle" Member="BlogUser" ThisKey="articleAutorId" OtherKey="userId" Type="BlogUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,10 @@
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\bin\Blogger.dll
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\bin\Blogger.pdb
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\bin\Blogger.xml
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\ResolveAssemblyReference.cache
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\Blogger.Resources.resources
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\GenerateResource.read.1.tlog
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\GenerateResource.write.1.tlog
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\Blogger.dll
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\Blogger.xml
+c:\users\stenlik\documents\visual studio 2010\Projects\Blogger\Blogger\obj\Debug\Blogger.pdb
